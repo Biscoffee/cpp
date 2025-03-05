@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+typedef struct  
+{
+    
+    int id;
+    char name[200];
+}Toy;
+
+int main()
+{
+    int n,m;
+    scanf("%d %d",&n,&m);
+    Toy *toys = (Toy*)malloc(sizeof(Toy)*n);
+    for(int i=0;i<n;i++)
+    {
+        scanf("%d %s",&toys[i].id,toys[i].name);
+    }
+    int current = 0;
+    for(int i = 0;i < m;i++)
+    {
+        int a,s;
+        scanf("%d %d",&a,&s);
+        if(toys[current].id == 0){
+            if(a == 0){
+                current = (current + n - s) % n;
+            } else {
+                current = (current + s) % n;
+            }
+        } else
+        {
+            if(toys->id == 0){
+                if(a == 0){
+                    current = (current + s) % n;
+                } else {
+                    current = (current + n - s) % n;
+                }
+            } 
+        }
+
+    }
+    printf("%s\n",toys[current].name);
+    free(toys);
+    return 0; 
+}

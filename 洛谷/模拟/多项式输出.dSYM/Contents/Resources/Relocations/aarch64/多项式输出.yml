@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     "/Users/tommywu/Desktop/demo/落谷/多项式输出"
+relocations:     []
+...

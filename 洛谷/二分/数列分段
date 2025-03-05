@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+int N, M;
+int A[100010];
+
+// 判断是否可以将数列分成 M 段，每段和不超过 max_sum
+int can_divide(int max_sum) {
+    int sum = 0; 
+    int cnt = 1;  
+    for (int i = 0; i < N; i++) {
+        sum += A[i];
+        if (sum > max_sum) {
+            cnt++;  
+            sum = A[i]; 
+            if (cnt > M) {
+                return 0; 
+            }
+        }
+    }
+    return 1;  
+}
+
+int main() {
+   
+    scanf("%d %d", &N, &M);
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &A[i]);
+    }
+
+    
+    int left = 0, right = 0;
+    for (int i = 0; i < N; i++) {
+        right += A[i];  
+        if (A[i] > left) {
+            left = A[i];  
+        }
+    }
+
+    int ans = right;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (can_divide(mid)) {
+            ans = mid; 
+            right = mid - 1;
+        } else {
+            left = mid + 1;  
+        }
+    }
+
+    printf("%d\n", ans); 
+    return 0;
+}
