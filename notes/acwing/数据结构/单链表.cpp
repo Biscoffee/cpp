@@ -9,7 +9,7 @@ int e[N],ne[N],idx,head;
 void init()
 {
     head = -1;
-    idx = 0;
+    idx = 0; //表示当前用到了哪个节点，用于分配新节点的索引
 }
 
 void add_at_head(int x)
